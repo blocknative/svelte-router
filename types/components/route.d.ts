@@ -1,11 +1,14 @@
 import { SvelteComponent } from 'svelte';
 import type { SvelteComponentTyped } from 'svelte/internal';
 
+export type AsyncSvelteComponent = () => Promise<{ default: typeof SvelteComponent }>;
+
 type CurrentRouteProp = {
   name: string;
   path: string;
   hash: string;
   component?: typeof SvelteComponent;
+  asyncComponent?: AsyncSvelteComponent;
   layout?: typeof SvelteComponent;
   queryParams: Record<string, string>;
   namedParams: Record<string, string>;
